@@ -8,7 +8,7 @@ import { GetMe } from "../features/authSlice";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isError, errorMessage } = useSelector((state) => state.auth);
+  const { isError } = useSelector((state) => state.auth);
 
   useEffect(() => {
     dispatch(GetMe());
@@ -25,7 +25,6 @@ const Dashboard = () => {
       {isError ? (
         <div className="text-center">
           <h3>Failed to load user data:</h3>
-          <p>{errorMessage}</p>
         </div>
       ) : (
         <Welcome />

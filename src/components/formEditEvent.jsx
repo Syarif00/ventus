@@ -26,9 +26,7 @@ const FormAddEvent = () => {
     const getEventById = async () => {
       try {
         const response = await axios.get(
-          `http://ventus.up.railway.app/api/dashboard/${id}`,{
-            withCredentials: true,
-          }
+          `https://ventus.up.railway.app/api/dashboard/${id}`
         );
         setTitle(response.data.title);
         setDesc(response.data.desc);
@@ -51,7 +49,7 @@ const FormAddEvent = () => {
   const updateEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://ventus.up.railway.app/api/dashboard/${id}`, {
+      await axios.patch(`https://ventus.up.railway.app/api/dashboard/${id}`, {
         title: title,
         desc: desc,
         image: image,

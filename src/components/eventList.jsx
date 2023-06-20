@@ -19,10 +19,7 @@ const EventList = () => {
 
   const getEvents = async () => {
     const response = await axios.get(
-      "http://ventus.up.railway.app/api/dashboard",
-      {
-        withCredentials: true,
-      }
+      "https://ventus.up.railway.app/api/dashboard"
     );
     setEvents(response.data);
   };
@@ -38,7 +35,7 @@ const EventList = () => {
     });
 
     if (result.isConfirmed) {
-      await axios.delete(`http://ventus.up.railway.app/api/dashboard/${id}`,{
+      await axios.delete(`https://ventus.up.railway.app/api/dashboard/${id}`, {
         withCredentials: true,
       });
       getEvents();

@@ -17,13 +17,11 @@ const Register = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://ventus.up.railway.app/api/users", {
+      await axios.post("https://ventus.up.railway.app/api/users", {
         username: username,
         email: email,
         password: password,
         confirmPassword: confirmPassword,
-      },{
-        withCredentials: true,
       });
       Swal.fire({
         icon: "success",

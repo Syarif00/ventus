@@ -16,7 +16,7 @@ export const LoginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://ventus.up.railway.app/api/auth/login",
+        "https://ventus.up.railway.app/api/auth/login",
         {
           email: user.email,
           password: user.password,
@@ -35,7 +35,7 @@ export const LoginUser = createAsyncThunk(
 export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
   try {
     const response = await axios.get(
-      "http://ventus.up.railway.app/api/auth/dashboard"
+      "https://ventus.up.railway.app/api/auth/dashboard"
     );
 
     return response.data;
@@ -48,7 +48,7 @@ export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("auth/LogOut", async () => {
-  await axios.delete("http://ventus.up.railway.app/api/auth/logout");
+  await axios.delete("https://ventus.up.railway.app/api/auth/logout");
 });
 
 export const authSlice = createSlice({

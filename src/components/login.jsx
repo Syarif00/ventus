@@ -18,8 +18,7 @@ const Login = () => {
     if (user || isSuccess) {
       navigate("/dashboard");
     }
-    dispatch(reset());
-  }, [user, isSuccess, navigate, dispatch]);
+  }, [user, isSuccess, navigate]);
 
   const Auth = (e) => {
     e.preventDefault();
@@ -42,6 +41,10 @@ const Login = () => {
       });
     }
   }, [isError, isSuccess, message]);
+
+  useEffect(() => {
+    dispatch(reset());
+  }, [user, isSuccess, dispatch]);
 
   return (
     <Container fluid>

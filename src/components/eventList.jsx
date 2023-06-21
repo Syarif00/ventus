@@ -19,7 +19,12 @@ const EventList = () => {
 
   const getEvents = async () => {
     const response = await axios.get(
-      "https://ventus.up.railway.app/api/dashboard"
+      "https://ventus.up.railway.app/api/dashboard",
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
     );
     setEvents(response.data);
   };

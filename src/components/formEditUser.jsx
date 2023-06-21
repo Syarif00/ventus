@@ -18,7 +18,12 @@ const FormEditUser = () => {
     const getUserById = async () => {
       try {
         const response = await axios.get(
-          `https://ventus.up.railway.app/api/users/${id}`
+          `https://ventus.up.railway.app/api/users/${id}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
         );
         setUsername(response.data.username);
         setEmail(response.data.email);
@@ -34,12 +39,20 @@ const FormEditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://ventus.up.railway.app/api/users/${id}`, {
-        username: username,
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword,
-      });
+      await axios.patch(
+        `https://ventus.up.railway.app/api/users/${id}`,
+        {
+          username: username,
+          email: email,
+          password: password,
+          confirmPassword: confirmPassword,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       navigate("/dashboard/users");
     } catch (error) {
       if (error.response) {

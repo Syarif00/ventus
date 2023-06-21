@@ -22,6 +22,8 @@ export const LoginUser = createAsyncThunk(
           password: user.password,
         }
       );
+      let token = response.data.token;
+      localStorage.setItem("token", token);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -34,8 +36,19 @@ export const LoginUser = createAsyncThunk(
 
 export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
   try {
+    let token = localStorage.getItem("token");
+
+    if (!token) {
+      return thunkAPI.rejectWithValue("Login ke Akun Anda ");
+    }
+
     const response = await axios.get(
-      "https://ventus.up.railway.app/api/auth/dashboard"
+      "https://ventus.up.railway.app/api/auth/dashboard",
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
     );
 
     return response.data;
@@ -88,6 +101,7 @@ export const authSlice = createSlice({
     });
     builder.addCase(LogOut.fulfilled, (state) => {
       state.user = null;
+      localStorage.removeItem("token");
     });
   },
 });

@@ -22,7 +22,7 @@ const FormAddEvent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://ventus.up.railway.app/dashboard", {
+      await axios.post("https://ventus.up.railway.app/api/dashboard/upload", {
         title: title,
         desc: desc,
         image: image,
@@ -33,6 +33,10 @@ const FormAddEvent = () => {
         location: location,
         price: price,
         link_registration: link_registration,
+      },{
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
       Swal.fire({
         icon: "success",

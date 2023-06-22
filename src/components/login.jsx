@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { LoginUser, reset } from "../features/authSlice";
 import Swal from "sweetalert2";
+import { logo } from "../assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -49,8 +50,8 @@ const Login = () => {
   return (
     <Container fluid>
       <Row>
-        <Col className="text-xl-left">
-          <h1>Logo</h1>
+        <Col className="text-center">
+          <img src={logo} alt="logo" />
         </Col>
       </Row>
       <Container>

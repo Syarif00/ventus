@@ -24,7 +24,7 @@ const Layout = ({ children }) => {
       if (result.isConfirmed) {
         dispatch(LogOut());
         dispatch(reset());
-        navigate("/login");
+        navigate("/");
       }
     });
   };

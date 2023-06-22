@@ -17,7 +17,7 @@ const EditEvent = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/login");
+      navigate("/");
     }
   }, [isError, navigate]);
 

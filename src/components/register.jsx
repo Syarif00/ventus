@@ -28,7 +28,7 @@ const Register = () => {
         title: "Success",
         text: "Berhasil Membuat Akun",
       }).then(() => {
-        navigate("/login");
+        navigate("/");
       });
     } catch (error) {
       if (error.response) {
@@ -121,7 +121,7 @@ const Register = () => {
                 <p className="font-weight-bold text-center">
                   Already have an Account ?{" "}
                   <Link
-                    to="/login"
+                    to="/"
                     role="button"
                     className="text-decoration-none text-dark fw-bold cursor"
                   >

@@ -17,7 +17,7 @@ const Events = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/login");
+      navigate("/");
     }
   }, [isError, navigate]);
 

@@ -17,7 +17,7 @@ const Users = () => {
 
   useEffect(() => {
     if (isError) {
-      navigate("/login");
+      navigate("/");
     }
     if (user && user.role !== "admin") {
       navigate("/dashboard");

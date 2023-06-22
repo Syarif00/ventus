@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Table, Container, Form, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import Swal from "sweetalert2";
 
@@ -44,7 +45,6 @@ const EventList = () => {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        
       });
       getEvents();
     }
@@ -77,9 +77,19 @@ const EventList = () => {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
   };
+  const { user } = useSelector((state) => state.auth);
+
 
   return (
     <Container fluid>
+      <div>
+        <p className="title text-xl"> Dashboard</p>
+        <p className="sub-title">
+          {" "}
+          Welcome <strong>{user && user.username}</strong>
+        </p>
+      </div>
+
       <h1> Events</h1>
       <p className="fs-4">List of events</p>
       <Row>

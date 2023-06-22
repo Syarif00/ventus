@@ -26,8 +26,11 @@ const FormAddEvent = () => {
     const getEventById = async () => {
       try {
         const response = await axios.get(
-          `http://ventus.up.railway.app/api/dashboard/${id}`,{
-            withCredentials: true,
+          `https://ventus.up.railway.app/api/dashboard/${id}`,
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
           }
         );
         setTitle(response.data.title);
@@ -51,18 +54,26 @@ const FormAddEvent = () => {
   const updateEvent = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`http://ventus.up.railway.app/api/dashboard/${id}`, {
-        title: title,
-        desc: desc,
-        image: image,
-        date: date,
-        time: time,
-        start_registration: start_registration,
-        end_registration: end_registration,
-        location: location,
-        price: price,
-        link_registration: link_registration,
-      });
+      await axios.patch(
+        `https://ventus.up.railway.app/api/dashboard/${id}`,
+        {
+          title: title,
+          desc: desc,
+          image: image,
+          date: date,
+          time: time,
+          start_registration: start_registration,
+          end_registration: end_registration,
+          location: location,
+          price: price,
+          link_registration: link_registration,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       navigate("/dashboard/events");
     } catch (error) {
       if (error.response) {

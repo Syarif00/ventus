@@ -19,9 +19,11 @@ const UserList = () => {
 
   const getUsers = async () => {
     const response = await axios.get(
-      "http://ventus.up.railway.app/api/users",
+      "https://ventus.up.railway.app/api/users",
       {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       }
     );
     setUsers(response.data);
@@ -37,8 +39,10 @@ const UserList = () => {
       confirmButtonText: "Ya, Hapus!",
     });
     if (result.isConfirmed) {
-      await axios.delete(`http://ventus.up.railway.app/api/users/${id}`, {
-        withCredentials: true,
+      await axios.delete(`https://ventus.up.railway.app/api/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
       });
       getUsers();
     }

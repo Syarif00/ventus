@@ -12,19 +12,18 @@ const initialState = {
 };
 
 export const LoginUser = createAsyncThunk(
-  "auth/loginUser",
+  "auth/LoginUser",
   async (user, thunkAPI) => {
     try {
       const response = await axios.post(
-        "http://ventus.up.railway.app/api/auth/login",
+        "https://ventus.up.railway.app/api/auth/login",
         {
           email: user.email,
           password: user.password,
-        },
-        {
-          withCredentials: true,
         }
       );
+      let token = response.data.token;
+      localStorage.setItem("token", token);
       return response.data;
     } catch (error) {
       if (error.response) {
@@ -35,12 +34,20 @@ export const LoginUser = createAsyncThunk(
   }
 );
 
-export const GetMe = createAsyncThunk("auth/getme", async (_, thunkAPI) => {
+export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
   try {
+    let token = localStorage.getItem("token");
+
+    if (!token) {
+      return thunkAPI.rejectWithValue("Login ke Akun Anda ");
+    }
+
     const response = await axios.get(
-      "http://ventus.up.railway.app/api/auth/dashboard",
+      "https://ventus.up.railway.app/api/auth/dashboard",
       {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
     );
 
@@ -54,16 +61,14 @@ export const GetMe = createAsyncThunk("auth/getme", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("auth/LogOut", async () => {
-  await axios.delete("http://ventus.up.railway.app/api/auth/logout", {
-    withCredentials: true,
-  });
+  await axios.delete("https://ventus.up.railway.app/api/auth/logout");
 });
 
 export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    reset: () => initialState,
+    reset: (state) => initialState,
   },
   extraReducers: (builder) => {
     builder.addCase(LoginUser.pending, (state) => {
@@ -83,23 +88,20 @@ export const authSlice = createSlice({
     //Get Dashboard
     builder.addCase(GetMe.pending, (state) => {
       state.isLoading = true;
-      state.isSuccess = false;
-      state.message = "";
     });
     builder.addCase(GetMe.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.isError = false;
-      state.message = "";
+      state.isSuccess = true;
       state.user = action.payload;
     });
     builder.addCase(GetMe.rejected, (state, action) => {
       state.isLoading = false;
       state.isError = true;
-      state.message = action.payload || "Error";
-      state.user = null;
+      state.message = action.payload;
     });
     builder.addCase(LogOut.fulfilled, (state) => {
       state.user = null;
+      localStorage.removeItem("token");
     });
   },
 });

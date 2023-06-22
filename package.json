@@ -1,7 +1,9 @@
 {
   "name": "frontend",
   "version": "0.1.0",
+  "homepage": "./",
   "private": true,
+  "homepage": "https://react.achmadsyarif.com/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",
@@ -10,7 +12,6 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.0",
     "cra-template-redux": "2.0.0",
-    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",

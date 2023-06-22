@@ -13,16 +13,17 @@ const Login = () => {
   const { user, isLoading, isSuccess, isError, message } = useSelector(
     (state) => state.auth
   );
-  const Auth = (e) => {
-    e.preventDefault();
-    dispatch(LoginUser({ email, password }));
-  };
+
   useEffect(() => {
     if (user || isSuccess) {
       navigate("/dashboard");
     }
-    dispatch(reset());
-  }, [user, isSuccess, navigate, dispatch]);
+  }, [user, isSuccess, navigate]);
+
+  const Auth = (e) => {
+    e.preventDefault();
+    dispatch(LoginUser({ email, password }));
+  };
 
   useEffect(() => {
     if (isError) {
@@ -40,6 +41,10 @@ const Login = () => {
       });
     }
   }, [isError, isSuccess, message]);
+
+  useEffect(() => {
+    dispatch(reset());
+  }, [user, isSuccess, dispatch]);
 
   return (
     <Container fluid>
@@ -74,7 +79,7 @@ const Login = () => {
                       id="password"
                       placeholder="********"
                       required
-                      name="password" 
+                      name="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />

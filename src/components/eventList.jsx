@@ -41,7 +41,10 @@ const EventList = () => {
 
     if (result.isConfirmed) {
       await axios.delete(`https://ventus.up.railway.app/api/dashboard/${id}`, {
-        withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        
       });
       getEvents();
     }

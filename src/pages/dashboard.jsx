@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import Layout from "./Layout";
-import Welcome from "../components/welcome";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import EventList from "../components/eventList";
 import { GetMe } from "../features/authSlice";
 
 const Dashboard = () => {
@@ -22,13 +22,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      {isError ? (
-        <div className="text-center">
-          <h3>Failed to load user data:</h3>
-        </div>
-      ) : (
-        <Welcome />
-      )}
+      <EventList />
     </Layout>
   );
 };

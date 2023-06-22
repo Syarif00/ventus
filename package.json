@@ -1,9 +1,8 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
-  "homepage": "./",
-  "private": true,
+  "version": "0.1.1",
   "homepage": "https://react.achmadsyarif.com/",
+  "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "@testing-library/jest-dom": "^5.16.4",

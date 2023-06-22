@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const FormAddEvent = () => {
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
-  const [image, setImage] = useState("");
+  const [img, setImg] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [start_registration, setStart_registration] = useState("");
@@ -19,25 +19,38 @@ const FormAddEvent = () => {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setImg(file);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://ventus.up.railway.app/api/dashboard/upload", {
-        title: title,
-        desc: desc,
-        image: image,
-        date: date,
-        time: time,
-        start_registration: start_registration,
-        end_registration: end_registration,
-        location: location,
-        price: price,
-        link_registration: link_registration,
-      },{
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("desc", desc);
+      formData.append("img", img);
+      formData.append("date", date);
+      formData.append("time", time);
+      formData.append("start_registration", start_registration);
+      formData.append("end_registration", end_registration);
+      formData.append("location", location);
+      formData.append("price", price);
+      formData.append("link_registration", link_registration);
+
+      const response = await axios.post(
+        "https://ventus.up.railway.app/api/dashboard/upload",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response.data);
       Swal.fire({
         icon: "success",
         title: "Success",
@@ -90,11 +103,11 @@ const FormAddEvent = () => {
             <Form.Label>Image</Form.Label>
             <Form.Control
               type="file"
-              placeholder="Enter your Password"
-              value={image}
+              placeholder="Enter your image"
               required
+              accept="image/*"
               className="mb-2"
-              onChange={(e) => setImage(e.target.value)}
+              onChange={handleImage}
             />
 
             <Row>

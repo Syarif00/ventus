@@ -26,7 +26,7 @@ const FormAddEvent = () => {
     const getEventById = async () => {
       try {
         const response = await axios.get(
-          `https://ventus.up.railway.app/api/dashboard/${id}`,
+          `https://server.vent-us.site/api/dashboard/${id}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -55,7 +55,7 @@ const FormAddEvent = () => {
     e.preventDefault();
     try {
       await axios.patch(
-        `https://ventus.up.railway.app/api/dashboard/${id}`,
+        `https://server.vent-us.site/api/dashboard/${id}`,
         {
           title: title,
           desc: desc,

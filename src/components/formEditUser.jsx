@@ -18,7 +18,7 @@ const FormEditUser = () => {
     const getUserById = async () => {
       try {
         const response = await axios.get(
-          `https://ventus.up.railway.app/api/users/${id}`,
+          `https://server.vent-us.site/api/users/${id}`,
           {
             headers: {
               authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -40,7 +40,7 @@ const FormEditUser = () => {
     e.preventDefault();
     try {
       await axios.patch(
-        `https://ventus.up.railway.app/api/users/${id}`,
+        `https://server.vent-us.site/api/users/${id}`,
         {
           username: username,
           email: email,

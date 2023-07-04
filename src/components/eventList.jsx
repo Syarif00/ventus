@@ -20,7 +20,7 @@ const EventList = () => {
 
   const getEvents = async () => {
     const response = await axios.get(
-      "https://ventus.up.railway.app/api/dashboard",
+      "https://server.vent-us.site/api/dashboard",
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -41,7 +41,7 @@ const EventList = () => {
     });
 
     if (result.isConfirmed) {
-      await axios.delete(`https://ventus.up.railway.app/api/dashboard/${id}`, {
+      await axios.delete(`https://server.vent-us.site/api/dashboard/${id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -78,7 +78,6 @@ const EventList = () => {
     setCurrentPage(1);
   };
   const { user } = useSelector((state) => state.auth);
-
 
   return (
     <Container fluid>

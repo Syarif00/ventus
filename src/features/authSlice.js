@@ -16,7 +16,7 @@ export const LoginUser = createAsyncThunk(
   async (user, thunkAPI) => {
     try {
       const response = await axios.post(
-        "https://ventus.up.railway.app/api/auth/login",
+        "https://server.vent-us.site/api/auth/login",
         {
           email: user.email,
           password: user.password,
@@ -43,7 +43,7 @@ export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
     }
 
     const response = await axios.get(
-      "https://ventus.up.railway.app/api/auth/dashboard",
+      "https://server.vent-us.site/api/auth/dashboard",
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -61,7 +61,7 @@ export const GetMe = createAsyncThunk("auth/GetMe", async (_, thunkAPI) => {
 });
 
 export const LogOut = createAsyncThunk("auth/LogOut", async () => {
-  await axios.delete("https://ventus.up.railway.app/api/auth/logout");
+  await axios.delete("https://server.vent-us.site/api/auth/logout");
 });
 
 export const authSlice = createSlice({

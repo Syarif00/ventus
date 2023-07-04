@@ -40,7 +40,7 @@ const FormAddEvent = () => {
       formData.append("link_registration", link_registration);
 
       const response = await axios.post(
-        "https://ventus.up.railway.app/api/dashboard/upload",
+        "https://server.vent-us.site/api/dashboard/upload",
         formData,
         {
           headers: {

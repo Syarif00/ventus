@@ -89,10 +89,10 @@ const FormAddEvent = () => {
               />
             </Form.Group>
 
-            <Form.Label>desc</Form.Label>
+            <Form.Label>Description</Form.Label>
 
             <Form.Control
-              type="text"
+              type="textarea"
               placeholder="Deskripsi"
               value={desc}
               className="mb-2"
@@ -185,7 +185,7 @@ const FormAddEvent = () => {
                   type="text"
                   required
                   className="mb-2"
-                  placeholder="Enter your Password"
+                  placeholder="https:// or http://example.com"
                   value={link_registration}
                   onChange={(e) => setLink_registration(e.target.value)}
                 />

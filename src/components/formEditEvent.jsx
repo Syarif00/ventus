@@ -102,7 +102,7 @@ const FormAddEvent = () => {
             <Form.Label className="mb-2">Description</Form.Label>
 
             <Form.Control
-              type="text"
+              type="textarea"
               placeholder="Enter your Desc"
               value={desc}
               onChange={(e) => setDesc(e.target.value)}

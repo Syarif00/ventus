@@ -78,8 +78,8 @@ const FormAddEvent = () => {
           <p className="text-danger text-center"> {msg} </p>
 
           <Form.Group className="mb-4 was-validated">
-            <Form.Label>title</Form.Label>
             <Form.Group className="mb-2 was-validated">
+              <Form.Label>title</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="Enter your Title"
@@ -88,27 +88,30 @@ const FormAddEvent = () => {
                 onChange={(e) => setTitle(e.target.value)}
               />
             </Form.Group>
+            <Form.Group className="mb-2 was-validated">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Deskripsi"
+                rows={3}
+                value={desc}
+                className="mb-2"
+                required
+                onChange={(e) => setDesc(e.target.value)}
+              />
+            </Form.Group>
 
-            <Form.Label>Description</Form.Label>
-
-            <Form.Control
-              type="textarea"
-              placeholder="Deskripsi"
-              value={desc}
-              className="mb-2"
-              required
-              onChange={(e) => setDesc(e.target.value)}
-            />
-
-            <Form.Label>Image</Form.Label>
-            <Form.Control
-              type="file"
-              placeholder="Enter your image"
-              required
-              accept="image/*"
-              className="mb-2"
-              onChange={handleImage}
-            />
+            <Form.Group className="mb-2 was-validated">
+              <Form.Label>Image</Form.Label>
+              <Form.Control
+                type="file"
+                placeholder="Enter your image"
+                required
+                accept="image/*"
+                className="mb-2"
+                onChange={handleImage}
+              />
+            </Form.Group>
 
             <Row>
               <Col>

@@ -99,26 +99,31 @@ const FormAddEvent = () => {
               />
             </Form.Group>
 
-            <Form.Label className="mb-2">Description</Form.Label>
+            <Form.Group className="mb-2 was-validated">
+              <Form.Label className="mb-2">Description</Form.Label>
+              <Form.Control
+                as="textarea"
+                placeholder="Enter your Desc"
+                value={desc}
+                rows={3}
+                onChange={(e) => setDesc(e.target.value)}
+                required
+                className="mb-2"
+              />
+            </Form.Group>
 
-            <Form.Control
-              type="textarea"
-              placeholder="Enter your Desc"
-              value={desc}
-              onChange={(e) => setDesc(e.target.value)}
-              required
-              className="mb-2"
-            />
-
-            <Form.Label className="mb-2">Image</Form.Label>
-            <Form.Control
-              type="file"
-              placeholder="Enter your Password"
-              required
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              className="mb-2"
-            />
+            <Form.Group className="mb-2 was-validated">
+              <Form.Label className="mb-2">Image</Form.Label>
+              <Form.Control
+                type="file"
+                placeholder="Enter your Password"
+                required
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                className="mb-2"
+              />
+            </Form.Group>
+            
             <Row>
               <Col>
                 <Form.Label>date</Form.Label>

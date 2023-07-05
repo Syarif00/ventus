@@ -93,7 +93,7 @@ const FormAddEvent = () => {
               <Form.Control
                 as="textarea"
                 placeholder="Deskripsi"
-                rows={3}
+                rows={5}
                 value={desc}
                 className="mb-2"
                 required

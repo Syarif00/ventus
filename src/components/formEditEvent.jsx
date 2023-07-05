@@ -105,7 +105,7 @@ const FormAddEvent = () => {
                 as="textarea"
                 placeholder="Enter your Desc"
                 value={desc}
-                rows={3}
+                rows={5}
                 onChange={(e) => setDesc(e.target.value)}
                 required
                 className="mb-2"

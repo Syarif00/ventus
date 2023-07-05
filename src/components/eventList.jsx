@@ -137,7 +137,7 @@ const EventList = () => {
               <td>{index + 1}</td>
               <td>{event.title}</td>
               <td>{event.price}</td>
-              <td></td>
+              <td>{event.User.username}</td>
               <td className="text-center">
                 <Link
                   to={`/dashboard/events/edit/${event.id_event}`}
